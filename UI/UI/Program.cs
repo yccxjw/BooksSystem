@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI;
 
-namespace UI
+namespace Usermanage.UI
 {
     static class Program
     {
