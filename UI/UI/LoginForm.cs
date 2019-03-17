@@ -122,7 +122,7 @@ namespace UI
 
         private void textBox8_TextChanged(object sender, EventArgs e)
         {
-            CodeImage(CheckCode());
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -141,7 +141,7 @@ namespace UI
         {
                 //从键盘获取用户名和密码
                 string username = textBox1.Text.TrimEnd();
-                string password = textBox2.Text.TrimEnd();
+                string userpassword = textBox2.Text.TrimEnd();
 
                 //对查询的记录进行判断TT
                 if (countlogin < 3)
@@ -150,10 +150,10 @@ namespace UI
                     if (loginuser.Username == username)
                     {
                         //用户名存在
-                        string dbpassword = loginuser.password;
-                        if (password.Equals(dbpassword.TrimEnd()))
+                        string dbpassword = loginuser.dbpassword;
+                        if (userpassword.Equals(dbpassword.TrimEnd()))
                         {
-                            //MessageBox.Show("登陆成功");
+                            MessageBox.Show("登陆成功");
                             
                         }
                         else
@@ -174,5 +174,10 @@ namespace UI
                 textBox2.Enabled = false;
                 }
             }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

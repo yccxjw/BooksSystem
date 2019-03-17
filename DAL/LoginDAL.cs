@@ -13,33 +13,35 @@ namespace DAL
     }
     public class Login_DAL
     {
-        string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+        static string strcon = "Data Source=J76NEJN7CK57G57;Initial Catalog=BooksSystem;Integrated Security=True";
+        SqlConnection con = new SqlConnection(strcon);
         Model.Login_MODEL loginuser = null;
 
 
-        public Model.Login_MODEL Query(string username)
+        public Model.Login_MODEL Query(string Username)
         {
-            using (SqlConnection conn = new SqlConnection(constr))
+            using (SqlConnection conn = new SqlConnection(strcon))
             {
                 conn.Open();
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "select * from Tab_login where Username=@username";
-                cmd.Parameters.Add(new SqlParameter("username", username));
+                cmd.CommandText = "select * from User_info where Username=@Username";
+                cmd.Parameters.Add(new SqlParameter("Username", Username));
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
                     {
                         loginuser = new Model.Login_MODEL();
-                        loginuser.Id = reader.GetInt32(0);
+                        loginuser.id = reader.GetInt32(0);
                         loginuser.Username = reader.GetString(1);
-                        loginuser.password = reader.GetString(2);
+                        loginuser.dbpassword = reader.GetString(2);
+                    
                     }
                     else
                     {
                         loginuser = new Model.Login_MODEL();
-                        loginuser.Id = -1;
+                        loginuser.id = -1;
                         loginuser.Username = "";
-                        loginuser.password = "";
+                        loginuser.dbpassword = "";
                     }
                 }
                 return loginuser;

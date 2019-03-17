@@ -14,9 +14,9 @@ namespace BLL
     {
         DAL.Login_DAL dal = new DAL.Login_DAL();
 
-        public Model.Login_MODEL getlogin(string username)
+        public Model.Login_MODEL getlogin(string Username)
         {
-            return dal.Query(username);
+            return dal.Query(Username);
         }
     }
 }

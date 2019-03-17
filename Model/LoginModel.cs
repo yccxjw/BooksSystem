@@ -12,12 +12,13 @@ namespace Model
     public class Login_MODEL
     {
         private int _id;
-        private string _username;
-        private string _password;
+        private string _Username;
+        private string _dbpassword;
+
         /// <summary>
         /// 
         /// </summary>
-        public int Id
+        public int id
         {
             set { _id = value; }
             get { return _id; }
@@ -27,16 +28,16 @@ namespace Model
         /// </summary>
         public string Username
         {
-            set { _username = value; }
-            get { return _username; }
+            set { _Username = value; }
+            get { return _Username; }
         }
         /// <summary>
         /// 
         /// </summary>
-        public string password
+        public string dbpassword
         {
-            set { _password = value; }
-            get { return _password; }
+            set { _dbpassword = value; }
+            get { return _dbpassword; }
         }
     }
 }
