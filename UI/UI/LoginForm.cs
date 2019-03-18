@@ -13,12 +13,14 @@ namespace UI
             InitializeComponent();
             CodeImage(CheckCode());
         }
+        string checkCode = String.Empty;
         
-        private string CheckCode()
+
+        public string CheckCode()
         {
             int number;
             char code;
-            string checkCode = String.Empty;
+            
 
             Random random = new Random();
 
@@ -32,8 +34,11 @@ namespace UI
                     code = (char)('A' + (char)(number % 26));
 
                 checkCode += " " + code.ToString();
+               
             }
             return checkCode;
+
+           
         }
         private void CodeImage(string checkCode)
         {
@@ -142,36 +147,38 @@ namespace UI
                 //从键盘获取用户名和密码
                 string username = textBox1.Text.TrimEnd();
                 string userpassword = textBox2.Text.TrimEnd();
-
-                //对查询的记录进行判断TT
-                if (countlogin < 3)
+                string Code = textBox8.Text.TrimEnd();
+                checkCode = checkCode.Replace(" ", "");
+            //对查询的记录进行判断TT
+            if (countlogin < 3)
                 {
                     Model.Login_MODEL loginuser = bll.getlogin(username);
-                    if (loginuser.Username == username)
-                    {
+                    
                         //用户名存在
+                if (Code == checkCode)//我本来写 if (Code == checkCode) 
+                    {
+                     if (loginuser.Username.TrimEnd() == username)
+                     {
                         string dbpassword = loginuser.dbpassword;
-                        if (userpassword.Equals(dbpassword.TrimEnd()))
-                        {
-                            MessageBox.Show("登陆成功");
-                            
-                        }
-                        else
-                        {
+                           if (userpassword.Equals(dbpassword.TrimEnd()))
+                           {
+                              MessageBox.Show("登陆成功");
+                           }
+                           else
+                           {
                             MessageBox.Show("密码错误，登录失败");
                             countlogin++;
-                        }
+                            }
                     }
                     else
                     {
                         MessageBox.Show("查无此人！");
+                    }  
                     }
+                    else
+                    {
+                         MessageBox.Show("验证码错误，请重新输入");
                 }
-                else
-                {
-                    MessageBox.Show("输入密码超过三次，账号被锁定，请联系管理员！");
-                textBox1.Enabled = false;
-                textBox2.Enabled = false;
                 }
             }
 
