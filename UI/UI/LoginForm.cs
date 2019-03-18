@@ -21,10 +21,8 @@ namespace UI
         {
             int number;
             char code;
-            
-
             Random random = new Random();
-
+        
             for (int i = 0; i < 4; i++)
             {
                 number = random.Next();
@@ -35,7 +33,7 @@ namespace UI
                     code = (char)('A' + (char)(number % 26));
 
                 checkCode += " " + code.ToString();
-               
+             
             }
             return checkCode;
 
@@ -207,5 +205,27 @@ namespace UI
         {
 
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            button3.Enabled = checkBox1.Checked;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+            MainForm f = new MainForm();
+            f.Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
     }
 }
