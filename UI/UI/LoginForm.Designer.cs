@@ -63,7 +63,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             button2 = new System.Windows.Forms.Button();
             this.tabPagel1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -429,13 +428,6 @@
             this.label5.Text = "账号：";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(359, 137);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(129, 21);
-            this.textBox10.TabIndex = 1;
-            // 
             // LoginForm
             // 
             this.AllowDrop = true;
@@ -444,7 +436,6 @@
             this.BackgroundImage = global::UI.UI.Properties.Resources.Login;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1282, 781);
-            this.Controls.Add(this.textBox10);
             this.Controls.Add(this.tabPagel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -461,7 +452,6 @@
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -500,7 +490,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox10;
     }
 }
 

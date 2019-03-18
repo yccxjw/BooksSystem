@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using UI.UI;
 
 namespace UI
 {
@@ -150,39 +151,59 @@ namespace UI
                 string Code = textBox8.Text.TrimEnd();
                 checkCode = checkCode.Replace(" ", "");
             //对查询的记录进行判断TT
-            if (countlogin < 3)
+
+            Model.Login_MODEL loginuser = bll.getlogin(username);
+            if (username != "")
+            {
+                if (userpassword != "")
                 {
-                    Model.Login_MODEL loginuser = bll.getlogin(username);
-                    
-                        //用户名存在
-                if (Code == checkCode)//我本来写 if (Code == checkCode) 
+                    if (Code != "")
                     {
-                     if (loginuser.Username.TrimEnd() == username)
-                     {
-                        string dbpassword = loginuser.dbpassword;
-                           if (userpassword.Equals(dbpassword.TrimEnd()))
-                           {
-                              MessageBox.Show("登陆成功");
-                           }
-                           else
-                           {
-                            MessageBox.Show("密码错误，登录失败");
-                            countlogin++;
+                        if (loginuser.Username.TrimEnd() == username)
+                        {
+                            string dbpassword = loginuser.dbpassword;
+                            if (userpassword.Equals(dbpassword.TrimEnd()))
+                            {
+                                MessageBox.Show("登陆成功");
+                                this.Hide();
+                                MainForm f = new MainForm();
+                                f.Show();
                             }
+                            else
+                            {
+                                MessageBox.Show("密码错误，登录失败");
+                                countlogin++;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("查无此人！");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("查无此人！");
-                    }  
+                        MessageBox.Show("请输入验证码");
                     }
-                    else
-                    {
-                         MessageBox.Show("验证码错误，请重新输入");
                 }
+                else
+                {
+                    MessageBox.Show("请输入密码");
                 }
             }
+            else
+            {
+                MessageBox.Show("请输入用户名");
+            }
+
+
+        }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
         {
 
         }
